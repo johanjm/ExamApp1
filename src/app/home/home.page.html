@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> EXAMEN 1B APLICACIONES MOVILES </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div>
+      
+  </div>
+  <ion-toolbar>
+    <ion-title class="centrado">DATOS</ion-title>
+  </ion-toolbar>
+  <form #formulario="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Nombre </ion-label>
+          <ion-input type="text" name="nombre" placeholder="Escriba el nombre completo" required ngModel>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Cédula </ion-label>
+          <ion-input type="numeric" name="cedula" minlength="10" maxlength="10" pattern="[0-9]*"
+            placeholder="Ingrese su número de cédula" required ngModel>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Edad (años)</ion-label>
+          <ion-input type="number" name="miembros" placeholder="16" min=16 max=200 maxlength="2" required ngModel>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-label>Latitud: {{latitud}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Longitud: {{longitud}}</ion-label>
+      </ion-item>
+      <div class="ion-padding">
+        <ion-button (click)=obtenerCoordenadas()>Obtener coordenadas de casa</ion-button>
+      </div>
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-toolbar>
+            <ion-title>Foto de perfil</ion-title>
+          </ion-toolbar>
+          <div class="preview">
+            <ion-avatar>
+              <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+            </ion-avatar>
+          </div>
+          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-col>
+    <ion-button expand="block"
+                (click)="changeImage(formulario)"> Tomar Foto y Guardar </ion-button>
+  </ion-col>
+
+  
+
+</ion-content>

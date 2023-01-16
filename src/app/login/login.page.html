@@ -1,0 +1,43 @@
+ <ion-header class="centrado">
+  <ion-toolbar color="primary">
+    <ion-title>EXAMEN 1B APLICACIONES MOVILES</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-card>
+    <img src="../../assets/logo.png" />
+    <ion-card-header>
+      <ion-card-title class="centrado"> </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Examen del primer bimestre de Aplicaciones Moviles
+    </ion-card-content>
+  </ion-card>
+
+ 
+  <form [formGroup]="credentials" (ngSubmit)="login()" class="centrado">
+    <ion-item fill="solid" class="ion-margin-vertical">
+      <ion-icon name="mail-outline" slot="end" color="medium">
+      </ion-icon>
+      <ion-input placeholder="Introduzca la dirección de correo electrónico" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-icon [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'" slot="end"
+        [color]="isTypePassword ? 'medium' : 'primary'">
+      </ion-icon>
+      <ion-input type="password" placeholder="Introducir la contraseña" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">La contraseña debe tener 6
+        caracteres.</ion-note>
+    </ion-item>
+
+    <ion-button  type="submit" color="primary" shape="round" [disabled]="!credentials.valid">LOG IN</ion-button>
+    <ion-button type="button" shape="round" (click)="register()">Crear una cuenta</ion-button>
+
+
+  </form>
+</ion-content>
